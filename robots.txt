@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://example.github.io/tweety-portfolio/sitemap.xml
+Sitemap: https://dobydragon.github.io/tweety-portfolio/sitemap.xml
