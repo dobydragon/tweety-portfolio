@@ -291,17 +291,21 @@ section { padding: 96px 0; position: relative; }
 .lb-prev { left: 22px; } .lb-next { right: 22px; }
 .lb-close { position: absolute; top: 22px; right: 22px; width: 46px; height: 46px; border-radius: 50%; background: var(--glass); border: 1px solid var(--border-strong); color: #fff; font-size: 1.3rem; cursor: pointer; }
 
-/* Phone mockup (mobile app section) */
+/* Screenshot cards (mobile app section) — square shots shown in full, no zoom/crop */
 .mobile-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
-.phones { display: flex; justify-content: center; gap: 22px; perspective: 1400px; }
+.phones { display: flex; justify-content: center; align-items: center; gap: 20px; perspective: 1500px; }
 .phone {
-  width: 230px; border-radius: 34px; padding: 10px; background: linear-gradient(160deg, #262a4d, #14162b);
+  width: 33%; max-width: 250px; border-radius: 22px; padding: 8px;
+  background: linear-gradient(160deg, #262a4d, #14162b);
   border: 1px solid var(--border-strong); box-shadow: var(--shadow); position: relative;
+  transition: transform .4s var(--ease), box-shadow .4s;
 }
-.phone::before { content: ""; position: absolute; top: 16px; left: 50%; transform: translateX(-50%); width: 54px; height: 6px; border-radius: 4px; background: rgba(255, 255, 255, .18); z-index: 3; }
-.phone img { border-radius: 26px; width: 100%; aspect-ratio: 1 / 2; object-fit: cover; object-position: top; }
-.phone.tilt-l { transform: rotateY(14deg) translateY(14px); }
-.phone.tilt-r { transform: rotateY(-14deg) translateY(14px); }
+.phone img { border-radius: 16px; width: 100%; aspect-ratio: 1 / 1; object-fit: contain; background: #0b0d1c; display: block; }
+.phone.tilt-l { transform: perspective(1500px) rotateY(16deg) scale(.94); z-index: 1; }
+.phone.tilt-r { transform: perspective(1500px) rotateY(-16deg) scale(.94); z-index: 1; }
+.phone:not(.tilt-l):not(.tilt-r) { transform: translateY(-10px) scale(1.04); z-index: 2; box-shadow: var(--shadow), var(--shadow-glow); }
+.phones:hover .phone.tilt-l { transform: perspective(1500px) rotateY(10deg) scale(.97); }
+.phones:hover .phone.tilt-r { transform: perspective(1500px) rotateY(-10deg) scale(.97); }
 
 /* Localization / notifications small feature rows */
 .split { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
@@ -398,7 +402,9 @@ section { padding: 96px 0; position: relative; }
   .counters { grid-template-columns: 1fr 1fr; }
   .footer-grid { grid-template-columns: 1fr; }
   .phones { flex-direction: column; align-items: center; }
+  .phone { width: 78%; max-width: 300px; }
   .phone.tilt-l, .phone.tilt-r { transform: none; }
+  .phone:not(.tilt-l):not(.tilt-r) { transform: none; }
   .lb-prev { left: 8px; } .lb-next { right: 8px; }
   .container { padding: 0 18px; }
 }
