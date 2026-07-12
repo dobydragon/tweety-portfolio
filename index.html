@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tweety — Social Networking App | Flutter + Firebase</title>
+<meta name="description" content="Tweety is a real-time social networking mobile app built with Flutter and Firebase — feeds, posts, likes, comments, direct messaging, profiles and secure email authentication. Explore the product, architecture and screens." />
+<meta name="author" content="Tweety" />
+<meta name="theme-color" content="#3F51B5" />
+<meta name="keywords" content="Tweety, social app, Flutter, Firebase, Firestore, mobile app, chat app, social network, BLoC, Dart" />
+<link rel="canonical" href="https://example.github.io/tweety-portfolio/" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Tweety" />
+<meta property="og:title" content="Tweety — Real-time Social Networking App" />
+<meta property="og:description" content="A cross-platform social app built with Flutter & Firebase: feeds, posts, real-time chat, profiles and secure auth." />
+<meta property="og:image" content="assets/og-image.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:url" content="https://example.github.io/tweety-portfolio/" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Tweety — Real-time Social Networking App" />
+<meta name="twitter:description" content="A cross-platform social app built with Flutter & Firebase: feeds, posts, real-time chat, profiles and secure auth." />
+<meta name="twitter:image" content="assets/og-image.jpg" />
+
+<!-- Icons / manifest -->
+<link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16.png" />
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png" />
+<link rel="manifest" href="site.webmanifest" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/css/styles.css" />
+
+<!-- JSON-LD structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Tweety",
+  "applicationCategory": "SocialNetworkingApplication",
+  "operatingSystem": "Android, iOS",
+  "description": "Tweety is a real-time social networking mobile application built with Flutter and Firebase. It offers a news feed, posts with images, likes and comments, one-to-one real-time messaging, user profiles and secure email/password authentication.",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "softwareVersion": "1.0.0",
+  "author": { "@type": "Organization", "name": "Tweety" }
+}
+</script>
+</head>
+<body>
+
+<!-- ===================== NAV ===================== -->
+<header class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="#home" class="brand">
+      <img class="logo" src="assets/brand/mascot-hero.jpg" alt="Tweety logo" width="36" height="36" />
+      <span>Tweet<b>y</b></span>
+    </a>
+    <nav class="nav-links">
+      <a href="#about">About</a>
+      <a href="#features">Features</a>
+      <a href="#workflow">Workflow</a>
+      <a href="#tech">Tech</a>
+      <a href="#screens">Screens</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="#contact" class="btn btn-primary">Get in touch</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<nav class="mobile-menu" id="mobileMenu">
+  <a href="#about">About</a>
+  <a href="#features">Features</a>
+  <a href="#workflow">Workflow</a>
+  <a href="#tech">Tech Stack</a>
+  <a href="#screens">Screens</a>
+  <a href="#security">Security</a>
+  <a href="#faq">FAQ</a>
+  <a href="#contact" class="btn btn-primary">Get in touch</a>
+</nav>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero" id="home">
+  <div class="container hero-grid">
+    <div class="reveal in">
+      <span class="eyebrow"><span class="dot"></span> Social networking · Flutter + Firebase</span>
+      <h1>Where every voice finds its <span class="gradient-text">flock.</span></h1>
+      <p class="lead">Tweety is a real-time social app for sharing moments, sparking conversations and staying connected — a news feed, posts, likes, comments, direct messaging and rich profiles, all in your pocket.</p>
+      <div class="hero-actions">
+        <a href="#screens" class="btn btn-primary btn-lg">Explore the app</a>
+        <a href="#features" class="btn btn-ghost btn-lg">See features</a>
+      </div>
+      <div class="hero-meta">
+        <div class="stat"><b data-count="9">0</b><span>Core modules</span></div>
+        <div class="stat"><b data-count="6">0</b><span>Firebase services</span></div>
+        <div class="stat"><b data-count="2">0</b><span>Themes: light & dark</span></div>
+      </div>
+    </div>
+    <div class="hero-visual reveal in">
+      <div class="hero-orb"></div>
+      <div class="mascot-frame">
+        <img src="assets/brand/mascot-hero.jpg" alt="Tweety mascot — a sparrow in a tuxedo" width="420" height="420" />
+      </div>
+      <div class="hero-badge b1"><span class="ico">💬</span> Real-time chat</div>
+      <div class="hero-badge b2"><span class="ico">❤️</span> Likes &amp; comments</div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="marquee-wrap" aria-hidden="true">
+      <div class="marquee">
+        <span>Flutter</span><span>Dart</span><span>Firebase Auth</span><span>Cloud Firestore</span><span>Firebase Storage</span><span>BLoC / Cubit</span><span>App Check</span><span>Dio</span>
+        <span>Flutter</span><span>Dart</span><span>Firebase Auth</span><span>Cloud Firestore</span><span>Firebase Storage</span><span>BLoC / Cubit</span><span>App Check</span><span>Dio</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ABOUT ===================== -->
+<section id="about">
+  <div class="container about-grid">
+    <div class="reveal">
+      <span class="eyebrow"><span class="dot"></span> About Tweety</span>
+      <h2 style="font-size:clamp(1.8rem,4vw,2.7rem);margin:16px 0 16px;">A social network, reimagined for closeness.</h2>
+      <p style="color:var(--text-soft);font-size:1.05rem;">Tweety brings the essentials of modern social media into one clean, fast Flutter experience. People create an account, personalise a profile with an avatar, cover and bio, then post text and photos to a shared feed. Every post can be liked and discussed through threaded comments, while private one-to-one chats keep conversations flowing in real time.</p>
+      <ul class="about-list">
+        <li><span class="check">✓</span> Built natively for Android &amp; iOS from a single Flutter codebase.</li>
+        <li><span class="check">✓</span> Backed by Firebase for authentication, data, media and delivery.</li>
+        <li><span class="check">✓</span> Predictable state with the BLoC / Cubit pattern and a global observer.</li>
+        <li><span class="check">✓</span> Light and dark themes designed into the app from day one.</li>
+      </ul>
+    </div>
+    <div class="about-visual reveal d1">
+      <img src="assets/brand/mascot-alt.jpg" alt="Tweety brand illustration" width="560" height="560" loading="lazy" />
+    </div>
+  </div>
+</section>
+
+<!-- ===================== WHY CHOOSE ===================== -->
+<section class="section-alt" id="why">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span class="dot"></span> Why choose Tweety</span>
+      <h2>Thoughtfully engineered, end to end.</h2>
+      <p>The things that make Tweety pleasant to use are the same things that make it dependable under the hood.</p>
+    </div>
+    <div class="grid grid-3">
+      <div class="card reveal"><div class="ico">⚡</div><h3>Real-time by default</h3><p>Feeds, chats and comments update live through Cloud Firestore streams — no manual refreshing, no stale content.</p></div>
+      <div class="card reveal d1"><div class="ico">🔐</div><h3>Secure sign-in</h3><p>Firebase Authentication with email &amp; password, an email-verification flow and Firebase App Check protecting the backend.</p></div>
+      <div class="card reveal d2"><div class="ico">🎨</div><h3>Polished UI</h3><p>Consistent theming, a smooth onboarding carousel, iconography and toast feedback for a refined feel.</p></div>
+      <div class="card reveal"><div class="ico">📶</div><h3>Connectivity aware</h3><p>Network status is monitored, with a dedicated offline screen so users always know where they stand.</p></div>
+      <div class="card reveal d1"><div class="ico">🧩</div><h3>Modular architecture</h3><p>Clean separation of modules, models, cubits and services makes the codebase easy to extend and maintain.</p></div>
+      <div class="card reveal d2"><div class="ico">🖼️</div><h3>Rich media</h3><p>Upload profile pictures, cover photos, post images and in-chat images straight to Firebase Storage.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FEATURES ===================== -->
+<section id="features">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span class="dot"></span> Features</span>
+      <h2>Everything a social app needs.</h2>
+      <p>Every capability below is implemented in the app's source — grouped by module.</p>
+    </div>
+    <div class="grid grid-3">
+      <div class="card feature-highlight reveal">
+        <div class="ico">📰</div>
+        <h3>News Feed</h3>
+        <p>A shared timeline of posts from every member, each showing the author, avatar, timestamp, text and optional photo, with live like and comment counts.</p>
+      </div>
+      <div class="card reveal d1"><div class="ico">✍️</div><h3>Create Posts</h3><p>Compose a post with text and an image picked from the gallery; media uploads to Firebase Storage before publishing.</p></div>
+      <div class="card reveal d2"><div class="ico">❤️</div><h3>Likes</h3><p>Tap to like any post. Likes are stored per user in a sub-collection and counted in real time.</p></div>
+      <div class="card reveal"><div class="ico">💬</div><h3>Comments</h3><p>Open a comment dialog to add threaded comments to a post, with author name, avatar and time — and delete your own.</p></div>
+      <div class="card reveal d1"><div class="ico">✉️</div><h3>Direct Messaging</h3><p>One-to-one real-time chat with text and image messages, mirrored to both inboxes and auto-scrolled to the newest reply.</p></div>
+      <div class="card reveal d2"><div class="ico">👥</div><h3>Users Directory</h3><p>Browse everyone on Tweety and jump straight into a profile or a conversation.</p></div>
+      <div class="card reveal"><div class="ico">🔎</div><h3>Search</h3><p>Find people quickly and open their public profile to view posts and start chatting.</p></div>
+      <div class="card reveal d1"><div class="ico">🪪</div><h3>Profiles</h3><p>Personalise your identity with an avatar, cover image, name and bio; edits propagate to your existing posts.</p></div>
+      <div class="card reveal d2"><div class="ico">🚀</div><h3>Onboarding &amp; Auth</h3><p>A guided intro carousel, register, login, password visibility toggle and email verification.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== WORKFLOW ===================== -->
+<section class="section-alt" id="workflow">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span class="dot"></span> Workflow</span>
+      <h2>From sign-up to conversation.</h2>
+      <p>The journey a member takes through Tweety, straight from the app's navigation.</p>
+    </div>
+    <div class="flow">
+      <div class="flow-step reveal"><div class="num">1</div><h3>Onboard &amp; register</h3><p>Meet Tweety through the intro carousel, create an account and verify your email.</p></div>
+      <div class="flow-step reveal d1"><div class="num">2</div><h3>Build your profile</h3><p>Add an avatar, cover photo and bio so your flock knows who you are.</p></div>
+      <div class="flow-step reveal d2"><div class="num">3</div><h3>Post &amp; engage</h3><p>Share text and photos to the feed, then like and comment on what others post.</p></div>
+      <div class="flow-step reveal d3"><div class="num">4</div><h3>Connect privately</h3><p>Find people, open a real-time chat and keep the conversation going.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== USER TYPES ===================== -->
+<section id="roles">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span class="dot"></span> User types</span>
+      <h2>Roles &amp; access.</h2>
+      <p>Tweety is a peer social network — access is governed by authentication and data ownership rules rather than tiered admin roles.</p>
+    </div>
+    <div class="roles">
+      <div class="card role reveal"><div class="ico">🙋</div><h3>Guest</h3><p style="margin-bottom:6px;color:var(--text-soft);">Unauthenticated visitor.</p><ul><li>View onboarding carousel</li><li>Register a new account</li><li>Log in to an existing account</li><li>Offline screen when disconnected</li></ul></div>
+      <div class="card role reveal d1"><div class="ico">👤</div><h3>Member</h3><p style="margin-bottom:6px;color:var(--text-soft);">Authenticated user (the core role).</p><ul><li>Create, view &amp; delete own posts</li><li>Like &amp; comment on any post</li><li>Real-time direct messaging</li><li>Edit own profile &amp; media</li></ul></div>
+      <div class="card role reveal d2"><div class="ico">🛡️</div><h3>Owner rules</h3><p style="margin-bottom:6px;color:var(--text-soft);">Enforced by data ownership.</p><ul><li>Only the author can delete a post</li><li>Only the author can remove a comment</li><li>Profile edits scoped to your <code>uId</code></li><li>App Check gates backend access</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ARCHITECTURE ===================== -->
+<section class="section-alt" id="architecture">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span class="dot"></span> Architecture</span>
+      <h2>How Tweety is put together.</h2>
+      <p>A layered Flutter architecture with reactive state and a Firebase backend.</p>
+    </div>
+    <div class="arch reveal">
+      <div class="arch-row"><div class="arch-label">Presentation</div><div class="arch-chips"><span class="chip">Onboarding</span><span class="chip">Feed</span><span class="chip">Chats</span><span class="chip">Add Post</span><span class="chip">Users</span><span class="chip">Profile</span><span class="chip">Search</span><span class="chip">Notifications</span></div></div>
+      <div class="arch-row"><div class="arch-label">State (BLoC)</div><div class="arch-chips"><span class="chip">Socialcubit</span><span class="chip">Maincubit (theme)</span><span class="chip">LoginCubit</span><span class="chip">RegisterCubit</span><span class="chip">BlocObserver</span></div></div>
+      <div class="arch-row"><div class="arch-label">Domain models</div><div class="arch-chips"><span class="chip">SocialUser</span><span class="chip">Post</span><span class="chip">Message</span><span class="chip">Comment</span></div></div>
+      <div class="arch-row"><div class="arch-label">Services</div><div class="arch-chips"><span class="chip">DioHelper</span><span class="chip">CacheHelper</span><span class="chip">Connectivity</span><span class="chip">Image Picker</span></div></div>
+      <div class="arch-row"><div class="arch-label">Backend</div><div class="arch-chips"><span class="chip">Firebase Auth</span><span class="chip">Cloud Firestore</span><span class="chip">Firebase Storage</span><span class="chip">App Check</span><span class="chip">Messaging (prepared)</span></div></div>
+    </div>
+    <p class="arch-flow-note">UI widgets dispatch to Cubits → Cubits talk to Firebase &amp; local services → new state streams back to the UI via <code>BlocConsumer</code>.</p>
+  </div>
+</section>
+
+<!-- ===================== TECH STACK ===================== -->
+<section id="tech">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span class="dot"></span> Tech stack</span>
+      <h2>Built on a proven, modern stack.</h2>
+      <p>Detected directly from the project's <code>pubspec.yaml</code> dependencies.</p>
+    </div>
+    <div class="stack-tabs reveal">
+      <button class="stack-tab active" data-stack="core">Core</button>
+      <button class="stack-tab" data-stack="firebase">Firebase</button>
+      <button class="stack-tab" data-stack="state">State &amp; Data</button>
+      <button class="stack-tab" data-stack="ui">UI &amp; Media</button>
+    </div>
+    <div class="stack-panel active grid grid-4" data-panel="core">
+      <div class="card"><div class="ico">🐦</div><h3>Flutter</h3><p>Cross-platform UI toolkit (Material Design).</p></div>
+      <div class="card"><div class="ico">🎯</div><h3>Dart</h3><p>SDK <code>&gt;=3.0.6 &lt;4.0.0</code>.</p></div>
+      <div class="card"><div class="ico">🌐</div><h3>Dio</h3><p>HTTP client for REST endpoints.</p></div>
+      <div class="card"><div class="ico">📡</div><h3>connectivity_plus</h3><p>Network status monitoring.</p></div>
+    </div>
+    <div class="stack-panel grid grid-4" data-panel="firebase">
+      <div class="card"><div class="ico">🔥</div><h3>firebase_core</h3><p>Firebase initialisation.</p></div>
+      <div class="card"><div class="ico">🔑</div><h3>firebase_auth</h3><p>Email &amp; password authentication.</p></div>
+      <div class="card"><div class="ico">🗄️</div><h3>cloud_firestore</h3><p>Real-time NoSQL database.</p></div>
+      <div class="card"><div class="ico">📦</div><h3>firebase_storage</h3><p>Image &amp; media storage.</p></div>
+      <div class="card"><div class="ico">🛡️</div><h3>firebase_app_check</h3><p>Backend abuse protection.</p></div>
+      <div class="card"><div class="ico">🔔</div><h3>firebase_messaging</h3><p>Push notifications (in stack, prepared).</p></div>
+    </div>
+    <div class="stack-panel grid grid-4" data-panel="state">
+      <div class="card"><div class="ico">🧠</div><h3>flutter_bloc / bloc</h3><p>Cubit-based state management.</p></div>
+      <div class="card"><div class="ico">💾</div><h3>shared_preferences</h3><p>Key-value local cache (session &amp; theme).</p></div>
+      <div class="card"><div class="ico">🗃️</div><h3>sqflite / sqlite3</h3><p>Local SQL storage (in stack).</p></div>
+      <div class="card"><div class="ico">🕒</div><h3>intl</h3><p>Date &amp; time formatting.</p></div>
+    </div>
+    <div class="stack-panel grid grid-4" data-panel="ui">
+      <div class="card"><div class="ico">🖼️</div><h3>image_picker</h3><p>Pick photos from the gallery.</p></div>
+      <div class="card"><div class="ico">🎠</div><h3>carousel_slider</h3><p>Onboarding &amp; media carousels.</p></div>
+      <div class="card"><div class="ico">•••</div><h3>smooth_page_indicator</h3><p>Onboarding page dots.</p></div>
+      <div class="card"><div class="ico">✨</div><h3>font_awesome · eva_icons</h3><p>Icon sets &amp; toasts (fluttertoast, flushbar).</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SECURITY ===================== -->
+<section class="section-alt" id="security">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span class="dot"></span> Security</span>
+      <h2>Protected from sign-in to storage.</h2>
+      <p>Security is handled by Firebase's managed services plus in-app checks.</p>
+    </div>
+    <div class="tiles">
+      <div class="card reveal"><div class="ico">🔑</div><h3>Authenticated access</h3><p>Every session is gated by Firebase Authentication; a cached <code>uId</code> decides whether the app opens the feed or the login screen.</p></div>
+      <div class="card reveal d1"><div class="ico">🛡️</div><h3>App Check</h3><p><code>FirebaseAppCheck</code> is activated at startup to help ensure requests originate from your genuine app.</p></div>
+      <div class="card reveal d2"><div class="ico">✅</div><h3>Email verification</h3><p>Accounts carry an <code>isEmailverified</code> flag with a dedicated verification screen and resend action.</p></div>
+      <div class="card reveal"><div class="ico">🙍</div><h3>Ownership rules</h3><p>Deletes and profile edits are scoped to the signed-in user's identity, so members only mutate their own content.</p></div>
+      <div class="card reveal d1"><div class="ico">👁️</div><h3>Password masking</h3><p>Password fields are obscured by default with a show/hide toggle on login and register.</p></div>
+      <div class="card reveal d2"><div class="ico">📴</div><h3>Graceful offline</h3><p>Connectivity is checked before launch and a dedicated no-internet screen prevents broken states.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== LOCALIZATION + NOTIFICATIONS ===================== -->
+<section id="platform">
+  <div class="container split">
+    <div class="reveal">
+      <span class="eyebrow"><span class="dot"></span> Localization &amp; formatting</span>
+      <h2 style="font-size:clamp(1.6rem,3.5vw,2.3rem);margin:16px 0 8px;">Ready for the world.</h2>
+      <p style="color:var(--text-soft);">Tweety uses Flutter's directionality and the <code>intl</code> package for locale-aware date and time formatting, with an explicit text direction set at the app root — a solid foundation for full localization.</p>
+      <ul class="mini-list">
+        <li><span class="ico">🌍</span><div><b>Directionality-aware UI</b><p>Text direction is configured at the <code>MaterialApp</code> root.</p></div></li>
+        <li><span class="ico">🕒</span><div><b>intl formatting</b><p>Human-friendly timestamps on posts, comments and chats.</p></div></li>
+        <li><span class="ico">🎨</span><div><b>Custom typography</b><p>A bundled custom font family ships with the app assets.</p></div></li>
+      </ul>
+    </div>
+    <div class="reveal d1">
+      <span class="eyebrow"><span class="dot"></span> Notifications</span>
+      <h2 style="font-size:clamp(1.6rem,3.5vw,2.3rem);margin:16px 0 8px;">Stay in the loop.</h2>
+      <p style="color:var(--text-soft);">The app ships with an in-app notifications screen, and Firebase Cloud Messaging is included in the stack and wired for foreground, background and tap-to-open handling.</p>
+      <ul class="mini-list">
+        <li><span class="ico">🔔</span><div><b>Notifications screen</b><p>A dedicated space for activity and updates.</p></div></li>
+        <li><span class="ico">📨</span><div><b>Firebase Messaging</b><p>FCM integrated in the stack; message handlers are prepared in code.</p></div></li>
+        <li><span class="ico">💬</span><div><b>Toast feedback</b><p>Instant in-app confirmations via fluttertoast &amp; flushbar.</p></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ANALYTICS / AT A GLANCE ===================== -->
+<section class="section-alt" id="analytics">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span class="dot"></span> At a glance</span>
+      <h2>The build in numbers.</h2>
+      <p>A snapshot of what makes up the Tweety codebase.</p>
+    </div>
+    <div class="counters">
+      <div class="card counter reveal"><b data-count="9">0</b><span>Feature modules</span></div>
+      <div class="card counter reveal d1"><b data-count="6">0</b><span>Firebase services</span></div>
+      <div class="card counter reveal d2"><b data-count="4">0</b><span>Domain models</span></div>
+      <div class="card counter reveal d3"><b data-count="20">0</b><span>+ dependencies</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SCREENSHOTS ===================== -->
+<section id="screens">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span class="dot"></span> Screens</span>
+      <h2>See Tweety in action.</h2>
+      <p>Real screens from the app. Filter by area, then click any screen — use ← → and Esc in the lightbox.</p>
+    </div>
+    <div class="filters reveal" id="filters">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="onboarding">Onboarding &amp; Auth</button>
+      <button class="filter-btn" data-filter="feed">Feed</button>
+      <button class="filter-btn" data-filter="chat">Chat</button>
+      <button class="filter-btn" data-filter="profile">Profile &amp; People</button>
+      <button class="filter-btn" data-filter="system">System</button>
+    </div>
+    <div class="gallery" id="gallery"><!-- injected by JS --></div>
+  </div>
+</section>
+
+<!-- ===================== MOBILE APP ===================== -->
+<section class="section-alt" id="mobile">
+  <div class="container mobile-grid">
+    <div class="reveal">
+      <span class="eyebrow"><span class="dot"></span> Mobile app</span>
+      <h2 style="font-size:clamp(1.8rem,4vw,2.6rem);margin:16px 0 14px;">One codebase, both platforms.</h2>
+      <p style="color:var(--text-soft);font-size:1.05rem;">Tweety is a Flutter application targeting Android and iOS (with desktop &amp; web build folders present). Light and dark themes are designed in, media is uploaded and served through Firebase, and the entire experience is driven by reactive Cubit state.</p>
+      <ul class="about-list">
+        <li><span class="check">✓</span> Native Android &amp; iOS from a single Dart codebase.</li>
+        <li><span class="check">✓</span> Light &amp; dark themes crafted in the app's theme layer.</li>
+        <li><span class="check">✓</span> Gallery-based media capture with Firebase Storage.</li>
+      </ul>
+    </div>
+    <div class="reveal d1">
+      <div class="phones">
+        <div class="phone tilt-l"><img src="assets/screens/chats-light.jpg" alt="Tweety chats screen" loading="lazy" /></div>
+        <div class="phone"><img src="assets/screens/feed.jpg" alt="Tweety feed screen" loading="lazy" /></div>
+        <div class="phone tilt-r"><img src="assets/screens/profile.jpg" alt="Tweety profile screen" loading="lazy" /></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FAQ ===================== -->
+<section id="faq">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span class="dot"></span> FAQ</span>
+      <h2>Questions, answered.</h2>
+      <p>The essentials about how Tweety is built and what it does.</p>
+    </div>
+    <div class="faq reveal">
+      <div class="faq-item"><button class="faq-q">What is Tweety built with? <span class="plus">+</span></button><div class="faq-a"><p>Tweety is a Flutter (Dart) mobile app using the BLoC/Cubit pattern for state, with Firebase providing authentication, a Cloud Firestore database, media storage, App Check and messaging.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Is the messaging real-time? <span class="plus">+</span></button><div class="faq-a"><p>Yes. Direct messages and the feed use Cloud Firestore snapshot streams, so new content appears instantly without manual refresh. Chats also auto-scroll to the latest message.</p></div></div>
+      <div class="faq-item"><button class="faq-q">How does authentication work? <span class="plus">+</span></button><div class="faq-a"><p>Members register and sign in with email and password through Firebase Authentication. An email-verification flow is included, and a cached user id determines whether the app opens straight into the feed.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Does it support dark mode? <span class="plus">+</span></button><div class="faq-a"><p>Both light and dark themes are defined in the app's theme layer, complete with matching app bars, navigation and typography, and appear throughout the screenshots.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Are push notifications live? <span class="plus">+</span></button><div class="faq-a"><p>Firebase Cloud Messaging is included in the stack and the message handlers are prepared in code, alongside a live in-app notifications screen. We describe FCM honestly as prepared rather than fully live.</p></div></div>
+      <div class="faq-item"><button class="faq-q">What happens when the device is offline? <span class="plus">+</span></button><div class="faq-a"><p>Connectivity is checked at launch using connectivity_plus, and a dedicated no-internet screen is shown so users always understand the app's state.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PRICING ===================== -->
+<section class="section-alt" id="pricing">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span class="dot"></span> Pricing</span>
+      <h2>Simple, transparent plans.</h2>
+      <p>Indicative placeholder pricing for presentation purposes — the app itself ships with no billing integration.</p>
+    </div>
+    <div class="pricing">
+      <div class="card price-card reveal"><h3>Free</h3><div class="price">$0<small>/mo</small></div><ul><li>Full social feed</li><li>Posts, likes &amp; comments</li><li>Real-time direct messages</li><li>Profile &amp; media uploads</li></ul><a href="#contact" class="btn btn-ghost" style="width:100%;">Get started</a></div>
+      <div class="card price-card featured reveal d1"><h3>Pro</h3><div class="price">$6<small>/mo</small></div><ul><li>Everything in Free</li><li>Priority media delivery</li><li>Enhanced profile customisation</li><li>Push notification alerts</li></ul><a href="#contact" class="btn btn-primary" style="width:100%;">Choose Pro</a></div>
+      <div class="card price-card reveal d2"><h3>Team</h3><div class="price">Custom</div><ul><li>Everything in Pro</li><li>Moderation tooling</li><li>Analytics &amp; insights</li><li>Dedicated support</li></ul><a href="#contact" class="btn btn-ghost" style="width:100%;">Contact us</a></div>
+    </div>
+    <p class="price-note">Placeholder pricing — not implemented in the application.</p>
+  </div>
+</section>
+
+<!-- ===================== CONTACT ===================== -->
+<section id="contact">
+  <div class="container">
+    <div class="cta-band reveal" style="margin-bottom:60px;">
+      <h2>Ready to join the flock?</h2>
+      <p>Explore the screens, dive into the documentation, or reach out to talk about the build.</p>
+      <div class="hero-actions" style="justify-content:center;">
+        <a href="#screens" class="btn btn-ghost btn-lg">View screens</a>
+        <a href="docs/PRODUCT_OVERVIEW.md" class="btn btn-ghost btn-lg">Read the docs</a>
+      </div>
+    </div>
+    <div class="contact-wrap">
+      <div class="reveal">
+        <span class="eyebrow"><span class="dot"></span> Contact</span>
+        <h2 style="font-size:clamp(1.7rem,4vw,2.4rem);margin:16px 0 14px;">Let's talk.</h2>
+        <p style="color:var(--text-soft);">Questions about the product, the architecture or a collaboration? Send a message and we'll get back to you.</p>
+        <ul class="contact-info" style="margin-top:26px;padding:0;">
+          <li><span class="ico">✉️</span><div><b>Email</b><br><span style="color:var(--text-dim);">admin@zadsolutions.com</span></div></li>
+          <li><span class="ico">🐦</span><div><b>Product</b><br><span style="color:var(--text-dim);">Tweety — social networking app</span></div></li>
+          <li><span class="ico">📱</span><div><b>Platforms</b><br><span style="color:var(--text-dim);">Android · iOS (Flutter)</span></div></li>
+        </ul>
+      </div>
+      <div class="contact-card reveal d1">
+        <form onsubmit="event.preventDefault(); this.reset(); document.getElementById('formNote').style.display='block';">
+          <div class="field"><label for="cn">Name</label><input id="cn" type="text" placeholder="Your name" required /></div>
+          <div class="field"><label for="ce">Email</label><input id="ce" type="email" placeholder="you@example.com" required /></div>
+          <div class="field"><label for="cm">Message</label><textarea id="cm" rows="4" placeholder="How can we help?" required></textarea></div>
+          <button type="submit" class="btn btn-primary" style="width:100%;">Send message</button>
+          <p id="formNote" style="display:none;color:var(--accent);font-size:.9rem;margin:14px 0 0;text-align:center;">Thanks! This is a demo form — no message was actually sent.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="#home" class="brand"><img class="logo" src="assets/brand/mascot-hero.jpg" alt="Tweety" width="36" height="36" /><span>Tweet<b>y</b></span></a>
+        <p style="margin-top:16px;">A real-time social networking app built with Flutter and Firebase — feeds, posts, chat and profiles in one clean experience.</p>
+      </div>
+      <div><h4>Product</h4><ul><li><a href="#features">Features</a></li><li><a href="#screens">Screens</a></li><li><a href="#mobile">Mobile app</a></li><li><a href="#pricing">Pricing</a></li></ul></div>
+      <div><h4>Build</h4><ul><li><a href="#architecture">Architecture</a></li><li><a href="#tech">Tech stack</a></li><li><a href="#security">Security</a></li><li><a href="#roles">User types</a></li></ul></div>
+      <div><h4>Docs</h4><ul><li><a href="docs/PRODUCT_OVERVIEW.md">Product overview</a></li><li><a href="docs/FEATURES.md">Features</a></li><li><a href="docs/ARCHITECTURE.md">Architecture</a></li><li><a href="docs/API_SUMMARY.md">Data &amp; API</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Tweety. Built with Flutter &amp; Firebase.</span>
+      <span>Portfolio &amp; documentation · crafted from the app source.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ===================== LIGHTBOX ===================== -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Screenshot viewer">
+  <button class="lb-close" id="lbClose" aria-label="Close">✕</button>
+  <button class="lb-btn lb-prev" id="lbPrev" aria-label="Previous">‹</button>
+  <img id="lbImg" src="" alt="" />
+  <button class="lb-btn lb-next" id="lbNext" aria-label="Next">›</button>
+  <div class="lb-cap" id="lbCap"></div>
+</div>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
